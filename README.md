@@ -22,7 +22,7 @@ It uses **React (Vite + Tailwind)** for UI, **FastAPI** for backend logic, **Pos
 ## 📸 Screenshots
 
 ### 🔐 Login Page
-<<img width="1917" height="993" alt="Screenshot 2025-11-09 234633" src="https://github.com/user-attachments/assets/f09f4aa9-7b0c-4cd4-91c7-030084f7ce3f" />width="700"/>
+<img width="1917" height="993" alt="Screenshot 2025-11-09 234633" src="https://github.com/user-attachments/assets/f09f4aa9-7b0c-4cd4-91c7-030084f7ce3f" width="700"/>
 
 ### 📊 Dashboard / Plans List
 <img src="./docs/screenshots/dashboard.png" width="700"/>
