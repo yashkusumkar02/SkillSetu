@@ -33,6 +33,11 @@ It uses **React (Vite + Tailwind)** for UI, **FastAPI** for backend logic, **Pos
 
 
 ---
+## 🏗 Architecture
+
+<img width="1080" height="663" alt="image" src="https://github.com/user-attachments/assets/ffaa3951-c557-40ea-9ad1-38f67db90131" />
+
+---
 
 ## 📁 Monorepo Structure
 
