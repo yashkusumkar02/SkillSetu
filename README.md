@@ -1,105 +1,160 @@
-# SkillSetu
+# 🚀 SkillSetu — AI-Powered Personalized Learning Plan Generator  
+_(Frontend + Backend + RAG + Ollama)_
 
-AI-powered learning plan generator built with Vite + React + TypeScript + Tailwind CSS.
+SkillSetu is a full-stack AI product that generates a **personalized learning roadmap** based on your **goal, skills, and time availability**.  
+It uses **React (Vite + Tailwind)** for UI, **FastAPI** for backend logic, **PostgreSQL** for plan storage, and **Ollama (local LLM)** for AI plan generation.
 
-## Tech Stack
+---
 
-- **Frontend**: Vite + React + TypeScript + Tailwind CSS
-- **Backend**: FastAPI + PostgreSQL
-- **Authentication**: JWT tokens
-- **AI**: Ollama (local LLM)
+## ⭐ Features
 
-## Getting Started
+| Area | Features |
+|------|----------|
+| ✅ Authentication | JWT login/register, token stored securely, route protection |
+| ✅ Plans Dashboard | View, delete, open AI plans |
+| ✅ AI Auto Plan | Generate multi-week learning plan using Ollama |
+| ✅ System Status | Shows if token + Ollama is working |
+| ✅ RAG (optional) | Chunking, embeddings, retrieval utilities |
+| ✅ API-first | Fully documented via FastAPI swagger (`/docs`) |
 
-### Prerequisites
+---
 
-- Node.js 18+ and npm
-- Python 3.11+ (for backend)
-- PostgreSQL (or use Docker)
-- Ollama (for AI plan generation)
+## 📁 Monorepo Structure
 
-### Frontend Setup
-
-1. **Install dependencies**
-   ```bash
-   cd frontend
-   npm i
-   ```
-
-2. **Configure environment**
-   ```bash
-   cp .env.example .env
-   # Edit VITE_API_BASE if needed (defaults to http://localhost:8000)
-   ```
-
-3. **Run development server**
-   ```bash
-   npm run dev
-   ```
-
-   Open http://localhost:5173
-
-### Build for Production
-
-```bash
-cd frontend
-npm run build
-npm run preview
-```
-
-## Environment Variables
-
-- `VITE_API_BASE`: Backend API base URL (default: `http://localhost:8000`)
-
-## Authentication
-
-- JWT tokens are stored in `localStorage` under the key `skillsetu_token`
-- All protected routes (`/plans*`) are automatically guarded
-- 401 responses automatically redirect to `/login`
-- Axios interceptor adds `Authorization: Bearer <token>` header automatically
-
-## CORS
-
-Ensure your backend CORS settings allow the frontend origin (typically `http://localhost:5173` for development).
-
-## Backend
-
-See the backend directory for FastAPI setup instructions. The backend provides:
-
-- `POST /auth/auth/register` - User registration
-- `POST /auth/auth/login` - User login
-- `GET /users/me` - Get current user
-- `GET /plans/` - List all plans
-- `POST /plans/auto` - Generate AI plan
-- `GET /plans/{id}` - Get plan details
-- `DELETE /plans/{id}` - Delete plan
-
-## Project Structure
-
-```
 SkillSetu/
-├── frontend/          # React + Vite frontend
-│   ├── src/
-│   │   ├── components/  # React components
-│   │   ├── pages/       # Page components
-│   │   ├── lib/         # Utilities (auth, axios)
-│   │   └── routes/      # Route guards
-│   └── package.json
-├── backend/           # FastAPI backend
-│   ├── app/
-│   │   ├── routers/    # API routes
-│   │   └── services/   # Business logic
-│   └── requirements.txt
-└── README.md
-```
+├── frontend/         # React + Vite + Tailwind + TS UI
+├── backend/          # FastAPI backend + DB + Ollama integration
+├── rag/              # RAG utilities (data ingestion, embeddings, retrieval)
+├── docs/             # (optional) screenshots, diagrams
+└── README.md         # <--- this file
 
-## Development Notes
+---
 
-- Tailwind CSS is preconfigured - no setup needed
-- All protected routes require authentication
-- System Status component (visible when logged in) allows testing auth and Ollama connectivity
-- Auto-plan generation requires Ollama to be running and accessible from the backend
+## 🧠 Tech Stack
 
-## License
+| Layer | Tech |
+|------|------|
+| **Frontend** | React + Vite + TypeScript + Tailwind CSS + Axios + React Router |
+| **Backend** | FastAPI + PostgreSQL + SQLAlchemy + JWT Auth |
+| **AI Model (Local)** | Ollama (`llama3`, `mistral`, or others) |
+| **Optional RAG** | Python + embeddings + chunking |
 
-MIT
+---
+
+# 🚀 Setup Instructions (Local)
+
+## ✅ 1. Clone Repo
+
+git clone https://github.com/<YOUR_USERNAME>/SkillSetu.git
+cd SkillSetu
+
+---
+
+## ✅ 2. Backend Setup (FastAPI)
+
+### Install dependencies
+
+cd backend
+python -m venv venv
+# Activate env:
+# Windows:
+venv\Scripts\activate
+# Mac/Linux:
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+### Configure environment
+
+cp .env.example .env
+
+Modify `.env`:
+
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=skillsetu
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+OLLAMA_URL=http://localhost:11434
+
+### Start backend
+
+uvicorn app.main:app --reload --port 8000
+
+➡️ API Docs: http://localhost:8000/docs
+
+---
+
+## ✅ 3. Start Ollama (LLM Server)
+
+ollama serve
+
+Pull model:
+
+ollama pull llama3
+
+---
+
+## ✅ 4. Frontend Setup (Vite + React)
+
+cd frontend
+npm install
+cp .env.example .env
+
+Set backend URL in `.env`:
+
+VITE_API_BASE=http://localhost:8000
+
+Run app:
+
+npm run dev
+
+➡️ Frontend: http://localhost:5173
+
+---
+
+## ✅ 5. RAG Setup (Optional)
+
+cd rag
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+
+---
+
+# 🔐 Authentication Flow
+
+Token stored in:
+localStorage → skillsetu_token
+
+Axios automatically attaches:
+Authorization: Bearer <token>
+
+401 → redirects to /login
+
+---
+
+# 🧪 APIs
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/auth/auth/register` | Register user |
+| POST | `/auth/auth/login` | Login & return JWT |
+| GET | `/users/me` | Verify token |
+| GET | `/plans/` | List plans |
+| POST | `/plans/auto` | Generate AI plan using Ollama |
+| GET | `/plans/{id}` | Plan detail |
+| DELETE | `/plans/{id}` | Delete plan |
+
+---
+
+# 📄 License
+
+MIT License
+
+---
+
+## ⭐ Author
+
+Made with ❤️ by **Deepak Kusumkar**
