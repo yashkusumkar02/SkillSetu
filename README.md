@@ -24,11 +24,13 @@ It uses **React (Vite + Tailwind)** for UI, **FastAPI** for backend logic, **Pos
 ### 🔐 Login Page
 <img width="1917" height="993" alt="Screenshot 2025-11-09 234633" src="https://github.com/user-attachments/assets/f09f4aa9-7b0c-4cd4-91c7-030084f7ce3f" width="700"/>
 
-### 📊 Dashboard / Plans List
-<img src="./docs/screenshots/dashboard.png" width="700"/>
+### 📊 Plans List
+
+<img width="1919" height="727" alt="Screenshot 2025-11-09 234642" src="https://github.com/user-attachments/assets/e83c7fd0-bc23-4182-bb56-9172568c4865" />
 
 ### 🤖 Auto Plan Generation Screen
-<img src="./docs/screenshots/auto-plan.png" width="700"/>
+<img width="1919" height="838" alt="Screenshot 2025-11-09 234656" src="https://github.com/user-attachments/assets/921bef71-9d72-472b-a8c7-fc8bd65f6589" />
+
 
 ---
 
