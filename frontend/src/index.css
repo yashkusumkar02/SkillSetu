@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl shadow-glass;
+  }
+  
+  .glass-elevated {
+    @apply glass shadow-2xl;
+  }
+  
+  .elevation-1 {
+    @apply shadow-lg;
+  }
+  
+  .elevation-2 {
+    @apply shadow-xl;
+  }
+  
+  .elevation-3 {
+    @apply shadow-2xl;
+  }
+  
+  /* Transitions */
+  .transition-smooth {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .transition-bounce {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  /* Focus styles for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-gray-900;
+  }
+  
+  /* Legacy classes for backward compatibility */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium transition-all;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 hover:bg-brand-500 text-white;
+  }
+  .btn-secondary {
+    @apply btn bg-white/10 hover:bg-white/20 text-white;
+  }
+  .input {
+    @apply block w-full rounded-xl border border-white/10 bg-white/5 text-white placeholder-white/40 focus:border-brand-500 focus:ring-brand-500;
+  }
+  .card {
+    @apply glass p-5;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-lg px-2 py-1 text-xs font-medium bg-brand-600/20 text-brand-200 border border-brand-600/40;
+  }
+  
+  /* Status pill utility for system status indicators */
+  .status-pill {
+    @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium border border-white/10 backdrop-blur-sm;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* nice scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4f46e5 transparent;
+}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+
+/* Animated background blobs */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob {
+    animation: none;
+  }
+}

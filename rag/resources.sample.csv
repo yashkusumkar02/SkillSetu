@@ -1,0 +1,6 @@
+title,url,source,tags,level,lang,duration_min
+"Intro to Statistics (Playlist)","https://www.youtube.com/playlist?list=PLstats101","youtube","statistics,probability,beginner","beginner","en",600
+"Hands-on Python for Data Analysis","https://github.com/py4da","github","python,pandas,numpy","beginner","en",300
+"Machine Learning Crash Course","https://developers.google.com/machine-learning/crash-course","google","ml,supervised,unsupervised","beginner","en",720
+"Deep Learning with PyTorch","https://www.youtube.com/playlist?list=PLpytorch101","youtube","pytorch,deep learning,neural nets","intermediate","en",900
+"Feature Engineering Guide","https://kaggle.com/learn/feature-engineering","kaggle","feature engineering,ml","intermediate","en",240

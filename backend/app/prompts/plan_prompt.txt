@@ -1,0 +1,13 @@
+You are an expert career learning path generator.
+Goal: {goal}
+Current skills: {skills}
+Duration: {weeks} weeks
+Resources: {resources}
+
+Return ONLY valid JSON:
+{
+  "summary": "...",
+  "weeks": [
+     {"week":1, "items":[{"day":1,"title":"...","url":"..."}]}
+  ]
+}

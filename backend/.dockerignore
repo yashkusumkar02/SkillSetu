@@ -1,0 +1,14 @@
+.git
+**/__pycache__/
+**/*.pyc
+.venv
+env
+dist
+build
+*.log
+rag/*.csv
+rag/*.json
+rag/*.ipynb
+frontend/
+infra/
+*.zip
